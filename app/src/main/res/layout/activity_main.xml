@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Calculadora">
+
+    <EditText
+        android:id="@+id/caja"
+        android:layout_width="338dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="120dp"
+        android:ems="10"
+        android:gravity="end"
+        android:inputType="none"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/b7"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="7"
+        android:onClick="t7"
+        app:layout_constraintTop_toBottomOf="@id/caja"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/b8"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="8"
+        android:onClick="t8"
+        app:layout_constraintStart_toEndOf="@id/b7"
+        app:layout_constraintTop_toTopOf="@id/b7"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/b9"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="9"
+        android:onClick="t9"
+        app:layout_constraintStart_toEndOf="@id/b8"
+        app:layout_constraintTop_toTopOf="@id/b7"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/bdiv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="÷"
+        android:onClick="tdivision"
+        app:layout_constraintStart_toEndOf="@id/b9"
+        app:layout_constraintTop_toTopOf="@id/b7"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/naranja"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/b4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="4"
+        android:onClick="t4"
+        app:layout_constraintTop_toBottomOf="@id/b7"
+        app:layout_constraintStart_toStartOf="@id/b7"
+        android:layout_marginTop="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/b5"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="5"
+        android:onClick="t5"
+        app:layout_constraintStart_toEndOf="@id/b4"
+        app:layout_constraintTop_toTopOf="@id/b4"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/b6"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="6"
+        android:onClick="t6"
+        app:layout_constraintStart_toEndOf="@id/b5"
+        app:layout_constraintTop_toTopOf="@id/b4"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/bmul"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="×"
+        android:onClick="tmultiplicar"
+        app:layout_constraintStart_toEndOf="@id/b6"
+        app:layout_constraintTop_toTopOf="@id/b4"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/naranja"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="1"
+        android:onClick="t1"
+        app:layout_constraintTop_toBottomOf="@id/b4"
+        app:layout_constraintStart_toStartOf="@id/b4"
+        android:layout_marginTop="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="2"
+        android:onClick="t2"
+        app:layout_constraintStart_toEndOf="@id/b1"
+        app:layout_constraintTop_toTopOf="@id/b1"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="3"
+        android:onClick="t3"
+        app:layout_constraintStart_toEndOf="@id/b2"
+        app:layout_constraintTop_toTopOf="@id/b1"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/bresta"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="-"
+        android:onClick="tresta"
+        app:layout_constraintStart_toEndOf="@id/b3"
+        app:layout_constraintTop_toTopOf="@id/b1"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/naranja"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/b0"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="0"
+        android:onClick="t0"
+        app:layout_constraintTop_toBottomOf="@id/b1"
+        app:layout_constraintStart_toStartOf="@id/b1"
+        android:layout_marginTop="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/bpunto"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="."
+        android:onClick="tpunto"
+        app:layout_constraintStart_toEndOf="@id/b0"
+        app:layout_constraintTop_toTopOf="@id/b0"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/bigual"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="="
+        android:onClick="tigual"
+        app:layout_constraintStart_toEndOf="@id/bpunto"
+        app:layout_constraintTop_toTopOf="@id/b0"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/naranja"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/bsuma"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="+"
+        android:onClick="tsuma"
+        app:layout_constraintStart_toEndOf="@id/bigual"
+        app:layout_constraintTop_toTopOf="@id/b0"
+        android:layout_marginStart="15dp"
+        app:backgroundTint="@color/naranja"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/bbc"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="⌫"
+        android:onClick="tbc"
+        app:layout_constraintTop_toBottomOf="@id/b0"
+        app:layout_constraintStart_toStartOf="@id/b0"
+        android:layout_marginTop="15dp"
+        app:backgroundTint="@color/gris_claro"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/bvolver"
+        android:layout_width="92dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="12dp"
+        android:onClick="bvolver"
+        android:text="Volver"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/gris_claro"
+        app:layout_constraintStart_toStartOf="@id/b0"
+        app:layout_constraintTop_toBottomOf="@id/b0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
