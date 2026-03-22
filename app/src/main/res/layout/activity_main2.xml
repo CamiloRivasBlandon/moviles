@@ -23,27 +23,29 @@
         android:id="@+id/btnIrAgenda"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:text="Abrir Agenda"
-        android:textSize="18sp"
         android:layout_marginBottom="24dp"
         android:onClick="abrirAgenda"
-        app:backgroundTint="@color/naranja"
-        android:textColor="@color/white" />
+        android:text="Abrir Agenda"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:backgroundTint="@color/naranja" />
 
     <Button
         android:id="@+id/btnIrCalculadora"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:text="Abrir Calculadora"
-        android:textSize="18sp"
+        android:layout_marginBottom="24dp"
         android:onClick="abrirCalculadora"
-        app:backgroundTint="@color/naranja"
-        android:textColor="@color/white" />
+        android:text="Abrir Calculadora"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:backgroundTint="@color/naranja" />
 
     <Button
         android:id="@+id/btnCerrarSesion"
         android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:layout_marginBottom="24dp"
         android:text="Cerrar Sesion"
         android:textSize="18sp"
         android:onClick="cerrarSesion"
