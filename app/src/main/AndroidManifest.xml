@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculadoraclase">
         <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".CrearUsuario"
+            android:exported="false" />
+        <activity
+            android:name=".Menu"
+            android:exported="false" />
+        <activity
             android:name=".Buscar"
             android:exported="false" />
         <activity
@@ -21,7 +30,7 @@
             android:name=".Calculadora"
             android:exported="false" />
         <activity
-            android:name=".Menu"
+            android:name=".Inicio"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

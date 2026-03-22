@@ -10,13 +10,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Menu extends AppCompatActivity {
+public class Inicio extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_inicio_sesion);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -24,16 +24,12 @@ public class Menu extends AppCompatActivity {
             return insets;
         });
     }
-    public void abrirAgenda(View v) {
-        Intent intent = new Intent(this, Agenda.class);
+    public void crear(View v) {
+        Intent intent = new Intent(this, CrearUsuario.class);
         startActivity(intent);
     }
-    public void abrirCalculadora(View v) {
-        Intent intent = new Intent(this, Calculadora.class);
-        startActivity(intent);
-    }
-    public void cerrarSesion(View v) {
-        Intent intent = new Intent(this, Inicio.class);
+    public void iniciarSesion(View v) {
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 }

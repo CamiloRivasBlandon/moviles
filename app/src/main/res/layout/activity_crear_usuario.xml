@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    tools:context=".CrearUsuario">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🛡️"
+        android:textSize="48sp"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Panel Administrativo"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingresa credenciales para registrar usuarios"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="48dp"/>
+
+    <EditText
+        android:id="@+id/edtNombreUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre de Usuario"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/edtContraseña"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnAñadirUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:onClick="guardarNuevoUsuario"
+        android:text="Añadir Usuario"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:backgroundTint="@color/naranja" />
+    <Button
+        android:id="@+id/btnVolverInicio"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:onClick="volverInicio"
+        android:text="Volver"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:backgroundTint="@color/naranja" />
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    tools:context=".Login">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calcu-Agenda"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inicia sesión para continuar"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginBottom="48dp"/>
+
+    <EditText
+        android:id="@+id/edtNombreUsuarioLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Usuario"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/edtContraseñaLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnIngresar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Iniciar Sesión"
+        android:textSize="18sp"
+        app:backgroundTint="@color/naranja"
+        android:textColor="@color/white"
+        android:onClick="comprobarUsuario" />
+
+</LinearLayout>
