@@ -37,19 +37,26 @@ public class CrearUsuario extends AppCompatActivity {
         btnVolverInicio = findViewById(R.id.btnVolverInicio);
     }
     public void guardarNuevoUsuario(View v) {
-        LoginUsuario u = new LoginUsuario();
+        String nombreIngresado = edtNombreUsuario.getText().toString().trim();
+        String contraseñaIngresada = edtContraseña.getText().toString().trim();
 
-        if (edtNombreUsuario != null || edtContraseña != null) {
-            u.setNombreUsuario(edtNombreUsuario.getText().toString());
-            u.setContraseñaUsuario(edtContraseña.getText().toString());
-            Login.listaUsuariosLogin.add(u);
-            Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        if (nombreIngresado.isEmpty() || contraseñaIngresada.isEmpty()) {
             Toast.makeText(this, "Por favor introducir Usuario y Contraseña", Toast.LENGTH_SHORT).show();
-            edtNombreUsuario.setText("");
-            edtContraseña.setText("");
+            return;
         }
+        for (LoginUsuario usuarioExistente : Login.listaUsuariosLogin) {
+            if (usuarioExistente.getNombreUsuario().equals(nombreIngresado)) {
+                Toast.makeText(this, "Error: Ese nombre de usuario ya está en uso", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        LoginUsuario u = new LoginUsuario();
+        u.setNombreUsuario(nombreIngresado);
+        u.setContraseñaUsuario(contraseñaIngresada);
+        Login.listaUsuariosLogin.add(u);
+        Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show();
+        edtNombreUsuario.setText("");
+        edtContraseña.setText("");
     }
 
     public void volverInicio(View v) {
