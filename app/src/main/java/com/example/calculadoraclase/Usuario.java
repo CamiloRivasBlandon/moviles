@@ -4,7 +4,6 @@ package com.example.calculadoraclase;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
-
     private String cedula;
     private String nombre;
     private String apellido;

@@ -162,19 +162,35 @@
                     android:text="Otro" />
             </RadioGroup>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gustos y Preferencias"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="12dp"/>
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-            <EditText android:id="@+id/editTextColorFavorito" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Color Favorito" android:inputType="text" android:minHeight="48dp" android:layout_marginBottom="12dp" />
-            <EditText android:id="@+id/editTextComidaFavorita" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Comida Favorita" android:inputType="text" android:minHeight="48dp" android:layout_marginBottom="12dp" />
-            <EditText android:id="@+id/editTextPasatiempo" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Pasatiempo / Hobby" android:inputType="text" android:minHeight="48dp" android:layout_marginBottom="12dp" />
-            <EditText android:id="@+id/editTextMusica" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Género Musical Favorito" android:inputType="text" android:minHeight="48dp" android:layout_marginBottom="24dp" />
+                <Button
+                    android:id="@+id/btnGustos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:onClick="irGustos"
+                    android:text="Gustos"
+                    app:backgroundTint="@color/gris_oscuro"
+                    android:textColor="@color/white"/>
+
+                <Button
+                    android:id="@+id/btnPreferencias"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:onClick="irPreferencias"
+                    android:text="Preferencias"
+                    app:backgroundTint="@color/gris_oscuro"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -198,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:onClick="guardar"
+                    android:onClick="guardarTodoElUsuario"
                     android:text="Guardar"
                     app:backgroundTint="@color/naranja"
                     android:textColor="@color/white"/>

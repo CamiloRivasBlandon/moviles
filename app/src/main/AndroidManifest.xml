@@ -12,13 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculadoraclase">
         <activity
+            android:name=".PreferenciasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Inicio"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".CrearUsuario"
             android:exported="false" />
         <activity
-            android:name=".Menu"
+            android:name=".GustosActivity"
             android:exported="false" />
         <activity
             android:name=".Buscar"
@@ -30,7 +36,7 @@
             android:name=".Calculadora"
             android:exported="false" />
         <activity
-            android:name=".Inicio"
+            android:name=".Menu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

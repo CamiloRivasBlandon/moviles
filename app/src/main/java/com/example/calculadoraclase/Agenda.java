@@ -16,6 +16,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Agenda extends AppCompatActivity {
+    public static Gustos gustosTemporales = null;
+    public static Preferencias preferenciasTemporales = null; // NUEVO BUZÓN
+
     EditText edtCedula, edtNombre, edtApellido, edtCorreo, edtTelefono, edtDireccion,
             edtCiudad, edtDepartamento, edtCodigoPostal, edtOcupacion, edtFechaNacimiento,
             edtColorFavorito, edtComidaFavorita, edtPasatiempo, edtMusica;
@@ -47,10 +50,6 @@ public class Agenda extends AppCompatActivity {
         edtOcupacion = findViewById(R.id.editTextOcupacion);
         edtFechaNacimiento = findViewById(R.id.editTextFechaNacimiento);
         rgGenero = findViewById(R.id.radioGroupGenero);
-        edtColorFavorito = findViewById(R.id.editTextColorFavorito);
-        edtComidaFavorita = findViewById(R.id.editTextComidaFavorita);
-        edtPasatiempo = findViewById(R.id.editTextPasatiempo);
-        edtMusica = findViewById(R.id.editTextMusica);
     }
     public void guardar(View v) {
         Usuario u = new Usuario();
@@ -66,10 +65,6 @@ public class Agenda extends AppCompatActivity {
         u.setCodigoPostal(edtCodigoPostal.getText().toString());
         u.setOcupacion(edtOcupacion.getText().toString());
         u.setFechaNacimiento(edtFechaNacimiento.getText().toString());
-        u.setColorFavorito(edtColorFavorito.getText().toString());
-        u.setComidaFavorita(edtComidaFavorita.getText().toString());
-        u.setPasatiempo(edtPasatiempo.getText().toString());
-        u.setGeneroMusica(edtMusica.getText().toString());
 
         int selectedId = rgGenero.getCheckedRadioButtonId();
         if (selectedId != -1) {
@@ -94,12 +89,38 @@ public class Agenda extends AppCompatActivity {
         edtOcupacion.setText("");
         edtFechaNacimiento.setText("");
         rgGenero.clearCheck();
-        edtColorFavorito.setText("");
-        edtComidaFavorita.setText("");
-        edtPasatiempo.setText("");
-        edtMusica.setText("");
     }
 
+    public void irGustos(View v) {
+        Intent intent = new Intent(this, GustosActivity.class); // Asegúrate que el nombre coincida
+        startActivity(intent);
+        // ¡OJO! NO ponemos finish() aquí. Queremos que la Agenda se quede esperando abajo.
+    }
+    public void irPreferencias(View v) {
+        Intent intent = new Intent(this, PreferenciasActivity.class);
+        startActivity(intent);
+    }
+    public void guardarTodoElUsuario(View v) {
+        // Validamos AMBOS buzones
+        if (gustosTemporales == null) {
+            Toast.makeText(this, "Por favor, ve a la sección de Gustos primero", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (preferenciasTemporales == null) {
+            Toast.makeText(this, "Por favor, ve a la sección de Preferencias primero", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(this, "¡Todos los datos guardados con éxito!", Toast.LENGTH_SHORT).show();
+
+        // Limpiamos AMBOS buzones
+        gustosTemporales = null;
+        preferenciasTemporales = null;
+
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+        finish();
+    }
     public void buscar(View v) {
         Intent intent = new Intent(this, Buscar.class);
         startActivity(intent);
