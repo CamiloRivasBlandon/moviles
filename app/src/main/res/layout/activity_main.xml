@@ -226,6 +226,17 @@
         android:textColor="@color/white"/>
 
     <Button
+        android:id="@+id/tRecuperar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="tRecuperar"
+        android:text="M"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/naranja"
+        app:layout_constraintStart_toEndOf="@+id/bbc"
+        app:layout_constraintTop_toTopOf="@+id/bbc" />
+    <Button
         android:id="@+id/bvolver"
         android:layout_width="92dp"
         android:layout_height="60dp"

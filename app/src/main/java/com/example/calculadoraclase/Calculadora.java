@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Calculadora extends AppCompatActivity {
     private Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bbc,bpunto,bvolver;
@@ -20,6 +21,7 @@ public class Calculadora extends AppCompatActivity {
     private double num1 = 0;
     private double num2 = 0;
     private String operacion = "";
+    private double memoria = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,6 +169,10 @@ public class Calculadora extends AppCompatActivity {
                 resultado = num1 / num2;
                 break;
         }
+        memoria = resultado;
+        Toast.makeText(this, "Resultado guardado: " + memoria, Toast.LENGTH_SHORT).show();
+        cadena = String.valueOf(resultado);
+        visualizar();
         cadena = String.valueOf(resultado);
         visualizar();
     }
@@ -174,6 +180,12 @@ public class Calculadora extends AppCompatActivity {
     public void tbc(View v){
         cadena = "";
         caja.setText("");
+    }
+    public void tRecuperar(View v) {
+        cadena = String.valueOf(memoria);
+        visualizar();
+
+        Toast.makeText(this, "Memoria recuperada", Toast.LENGTH_SHORT).show();
     }
 
     public void visualizar(){
