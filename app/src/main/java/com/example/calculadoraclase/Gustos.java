@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Gustos implements Serializable {
 
-    // 10 Atributos de Gustos
     private String comidaFavorita;
     private String peliculaFavorita;
     private String generoMusical;
@@ -16,12 +15,8 @@ public class Gustos implements Serializable {
     private String animalFavorito;
     private String lugarDeViaje;
 
-    // Constructor vacío
     public Gustos() {
     }
-
-    // --- GETTERS Y SETTERS (10 Pares) ---
-
     public String getComidaFavorita() { return comidaFavorita; }
     public void setComidaFavorita(String comidaFavorita) { this.comidaFavorita = comidaFavorita; }
 

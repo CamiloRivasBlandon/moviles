@@ -30,7 +30,7 @@
 
             <EditText
                 android:id="@+id/edtBuscarCedula"
-                android:layout_width="0dp"
+                android:layout_width="251dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Ingrese la Cédula"
@@ -41,9 +41,18 @@
                 android:id="@+id/btnEjecutarBusqueda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Buscar"
+                android:backgroundTint="@color/naranja"
+                android:layout_marginStart="8dp"/>
+
+            <Button
+                android:id="@+id/btnModificarUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modificar"
+                android:backgroundTint="#FF9800"
                 android:layout_marginStart="8dp"
-                android:onClick="buscarUsuario"
-                android:text="Buscar" />
+                android:onClick="irAModificar" />
         </LinearLayout>
 
         <View

@@ -214,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:onClick="guardarTodoElUsuario"
+                    android:onClick="guardar"
                     android:text="Guardar"
                     app:backgroundTint="@color/naranja"
                     android:textColor="@color/white"/>

@@ -15,7 +15,7 @@
             android:name=".PreferenciasActivity"
             android:exported="false" />
         <activity
-            android:name=".Inicio"
+            android:name=".Menu"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -36,7 +36,7 @@
             android:name=".Calculadora"
             android:exported="false" />
         <activity
-            android:name=".Menu"
+            android:name=".Inicio"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

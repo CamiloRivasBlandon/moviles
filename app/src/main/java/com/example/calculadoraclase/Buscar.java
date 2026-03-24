@@ -1,6 +1,8 @@
 package com.example.calculadoraclase;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,8 +55,6 @@ public class Buscar extends AppCompatActivity {
 
         for (Usuario u : listaUsuarios) {
             if (u.getCedula().equals(cedulaBuscada)) {
-
-                // 1. Armamos el bloque de DATOS BÁSICOS
                 String datos = "Cédula: " + u.getCedula() + "\n" +
                         "Nombre: " + u.getNombre() + " " + u.getApellido() + "\n" +
                         "Correo: " + u.getCorreo() + "\n" +
@@ -66,8 +66,6 @@ public class Buscar extends AppCompatActivity {
                         "Nacimiento: " + u.getFechaNacimiento() + "\n" +
                         "Género: " + u.getGenero();
                 tvDatosBasicos.setText(datos);
-
-                // 2. Armamos el bloque de GUSTOS
                 if (u.getMisGustos() != null) {
                     String gustos = "Comida: " + u.getMisGustos().getComidaFavorita() + "\n" +
                             "Película: " + u.getMisGustos().getPeliculaFavorita() + "\n" +
@@ -83,7 +81,6 @@ public class Buscar extends AppCompatActivity {
                 } else {
                     tvTodosLosGustos.setText("El usuario no registró gustos.");
                 }
-
                 if (u.getMisPreferencias() != null) {
                     String pref = "Notificaciones: " + u.getMisPreferencias().getNotificaciones() + "\n" +
                             "Tema: " + u.getMisPreferencias().getTema() + "\n" +
@@ -99,18 +96,38 @@ public class Buscar extends AppCompatActivity {
                 } else {
                     tvTodasLasPreferencias.setText("El usuario no registró preferencias.");
                 }
-
                 encontrado = true;
                 break;
             }
         }
-
         if (!encontrado) {
             limpiarCampos();
             Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
         }
     }
+    public void irAModificar(View v) {
+        String cedulaBuscada = edtBuscarCedula.getText().toString().trim();
 
+        if (cedulaBuscada.isEmpty()) {
+            Toast.makeText(this, "Primero busque una cédula para modificar", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        boolean existe = false;
+        for (Usuario u : listaUsuarios) {
+            if (u.getCedula().equals(cedulaBuscada)) {
+                existe = true;
+                break;
+            }
+        }
+        if (existe) {
+            Intent intent = new Intent(this, Agenda.class);
+            intent.putExtra("cedula_editar", cedulaBuscada);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "Ese usuario no existe", Toast.LENGTH_SHORT).show();
+        }
+    }
     private void limpiarCampos() {
         tvDatosBasicos.setText("Los datos aparecerán aquí...");
         tvTodosLosGustos.setText("Los gustos aparecerán aquí...");
