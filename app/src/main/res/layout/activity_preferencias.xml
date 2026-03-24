@@ -88,7 +88,7 @@
         <RadioGroup android:id="@+id/rgInicio" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="32dp">
             <RadioButton android:id="@+id/rbInicioMenu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Leche"/>
             <RadioButton android:id="@+id/rbInicioAgenda" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Solo"/>
-            <RadioButton android:id="@+id/rbInicioBuscar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Con Hielo"/>
+            <RadioButton android:id="@+id/rbInicioBuscar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hielo"/>
         </RadioGroup>
 
         <Button
