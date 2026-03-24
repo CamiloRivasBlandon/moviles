@@ -91,7 +91,7 @@ public class Buscar extends AppCompatActivity {
                             "Sonidos: " + u.getMisPreferencias().getSonidos() + "\n" +
                             "Autoguardado: " + u.getMisPreferencias().getAutoguardado() + "\n" +
                             "Hora: " + u.getMisPreferencias().getFormatoHora() + "\n" +
-                            "Inicio: " + u.getMisPreferencias().getPantallaInicio();
+                            "Cafe con: " + u.getMisPreferencias().getPantallaInicio();
                     tvTodasLasPreferencias.setText(pref);
                 } else {
                     tvTodasLasPreferencias.setText("El usuario no registró preferencias.");
