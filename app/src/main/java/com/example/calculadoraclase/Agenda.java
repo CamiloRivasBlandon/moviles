@@ -17,12 +17,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Agenda extends AppCompatActivity {
     public static Gustos gustosTemporales = null;
-    public static Preferencias preferenciasTemporales = null; // NUEVO BUZÓN
+    public static Preferencias preferenciasTemporales = null;
 
     EditText edtCedula, edtNombre, edtApellido, edtCorreo, edtTelefono, edtDireccion,
-            edtCiudad, edtDepartamento, edtCodigoPostal, edtOcupacion, edtFechaNacimiento,
-            edtColorFavorito, edtComidaFavorita, edtPasatiempo, edtMusica;
-
+            edtCiudad, edtDepartamento, edtCodigoPostal, edtOcupacion, edtFechaNacimiento;
     RadioGroup rgGenero;
     Button bnueva, btnBuscar;
 
@@ -36,6 +34,7 @@ public class Agenda extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         bnueva = findViewById(R.id.bnueva);
         btnBuscar = findViewById(R.id.btnBuscar);
         edtCedula = findViewById(R.id.editTextCedula);
@@ -51,57 +50,10 @@ public class Agenda extends AppCompatActivity {
         edtFechaNacimiento = findViewById(R.id.editTextFechaNacimiento);
         rgGenero = findViewById(R.id.radioGroupGenero);
     }
+
+    // ESTE ES EL ÚNICO MÉTODO DE GUARDADO AHORA
     public void guardar(View v) {
-        Usuario u = new Usuario();
-
-        if (edtCedula != null) u.setCedula(edtCedula.getText().toString());
-        u.setNombre(edtNombre.getText().toString());
-        u.setApellido(edtApellido.getText().toString());
-        u.setCorreo(edtCorreo.getText().toString());
-        u.setTelefono(edtTelefono.getText().toString());
-        u.setDireccion(edtDireccion.getText().toString());
-        u.setCiudad(edtCiudad.getText().toString());
-        u.setDepartamento(edtDepartamento.getText().toString());
-        u.setCodigoPostal(edtCodigoPostal.getText().toString());
-        u.setOcupacion(edtOcupacion.getText().toString());
-        u.setFechaNacimiento(edtFechaNacimiento.getText().toString());
-
-        int selectedId = rgGenero.getCheckedRadioButtonId();
-        if (selectedId != -1) {
-            RadioButton rbSeleccionado = findViewById(selectedId);
-            u.setGenero(rbSeleccionado.getText().toString());
-        } else {
-            u.setGenero("No especificado");
-        }
-
-        Buscar.listaUsuarios.add(u);
-        Toast.makeText(this, "Usuario guardado exitosamente", Toast.LENGTH_SHORT).show();
-
-        edtCedula.setText("");
-        edtNombre.setText("");
-        edtApellido.setText("");
-        edtCorreo.setText("");
-        edtTelefono.setText("");
-        edtDireccion.setText("");
-        edtCiudad.setText("");
-        edtDepartamento.setText("");
-        edtCodigoPostal.setText("");
-        edtOcupacion.setText("");
-        edtFechaNacimiento.setText("");
-        rgGenero.clearCheck();
-    }
-
-    public void irGustos(View v) {
-        Intent intent = new Intent(this, GustosActivity.class); // Asegúrate que el nombre coincida
-        startActivity(intent);
-        // ¡OJO! NO ponemos finish() aquí. Queremos que la Agenda se quede esperando abajo.
-    }
-    public void irPreferencias(View v) {
-        Intent intent = new Intent(this, PreferenciasActivity.class);
-        startActivity(intent);
-    }
-    public void guardarTodoElUsuario(View v) {
-        // Validamos AMBOS buzones
+        // 1. Validamos que los buzones de Gustos y Preferencias no estén vacíos
         if (gustosTemporales == null) {
             Toast.makeText(this, "Por favor, ve a la sección de Gustos primero", Toast.LENGTH_SHORT).show();
             return;
@@ -111,20 +63,70 @@ public class Agenda extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(this, "¡Todos los datos guardados con éxito!", Toast.LENGTH_SHORT).show();
+        // 2. Extraemos la cédula y validamos que el usuario la haya escrito
+        String cedula = edtCedula.getText().toString().trim();
+        if (cedula.isEmpty()) {
+            Toast.makeText(this, "La cédula es obligatoria", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Limpiamos AMBOS buzones
+        // 3. Creamos el "molde" del Usuario y le metemos TODOS los textos de la pantalla
+        Usuario u = new Usuario();
+        u.setCedula(cedula);
+        u.setNombre(edtNombre.getText().toString().trim());
+        u.setApellido(edtApellido.getText().toString().trim());
+        u.setCorreo(edtCorreo.getText().toString().trim());
+        u.setTelefono(edtTelefono.getText().toString().trim());
+        u.setDireccion(edtDireccion.getText().toString().trim());
+        u.setCiudad(edtCiudad.getText().toString().trim());
+        u.setDepartamento(edtDepartamento.getText().toString().trim());
+        u.setCodigoPostal(edtCodigoPostal.getText().toString().trim());
+        u.setOcupacion(edtOcupacion.getText().toString().trim());
+        u.setFechaNacimiento(edtFechaNacimiento.getText().toString().trim());
+
+        // Validamos el RadioButton del Género
+        int selectedId = rgGenero.getCheckedRadioButtonId();
+        if (selectedId != -1) {
+            RadioButton rbSeleccionado = findViewById(selectedId);
+            u.setGenero(rbSeleccionado.getText().toString());
+        } else {
+            u.setGenero("No especificado");
+        }
+
+        // 4. Le pasamos los datos de los buzones al usuario
+        u.setMisGustos(gustosTemporales);
+        u.setMisPreferencias(preferenciasTemporales);
+
+        // 5. Guardamos al usuario completo en la lista oficial del buscador
+        Buscar.listaUsuarios.add(u);
+
+        Toast.makeText(this, "¡Registro guardado con éxito!", Toast.LENGTH_SHORT).show();
+
+        // 6. Limpiamos los buzones para el próximo usuario
         gustosTemporales = null;
         preferenciasTemporales = null;
 
+        // 7. Cerramos la Agenda y volvemos al Menú principal
         Intent intent = new Intent(this, Menu.class);
         startActivity(intent);
         finish();
     }
+
+    public void irGustos(View v) {
+        Intent intent = new Intent(this, GustosActivity.class);
+        startActivity(intent);
+    }
+
+    public void irPreferencias(View v) {
+        Intent intent = new Intent(this, PreferenciasActivity.class);
+        startActivity(intent);
+    }
+
     public void buscar(View v) {
         Intent intent = new Intent(this, Buscar.class);
         startActivity(intent);
     }
+
     public void bvolver(View v) {
         Intent intent = new Intent(this, Menu.class);
         startActivity(intent);

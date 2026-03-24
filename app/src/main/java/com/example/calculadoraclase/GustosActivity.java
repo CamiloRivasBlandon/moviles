@@ -15,8 +15,6 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Locale;
 
 public class GustosActivity extends AppCompatActivity {
-
-    // Declaramos las 10 variables
     EditText edtComida, edtPelicula, edtGenero, edtColor, edtDeporte,
             edtLibro, edtPasatiempo, edtBebida, edtAnimal, edtLugar;
 
@@ -30,8 +28,6 @@ public class GustosActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        // Enlazamos las 10 variables con el XML usando sus IDs
         edtComida = findViewById(R.id.edtComida);
         edtPelicula = findViewById(R.id.edtPelicula);
         edtGenero = findViewById(R.id.edtGenero);
@@ -43,17 +39,12 @@ public class GustosActivity extends AppCompatActivity {
         edtAnimal = findViewById(R.id.edtAnimal);
         edtLugar = findViewById(R.id.edtLugar);
     }
-
-    // Función del botón (Recuerda: siempre public y con View v)
     public void guardarGustos(View v) {
-        // 1. Validamos que no esté todo vacío (opcional)
         String comida = edtComida.getText().toString().trim();
         if (comida.isEmpty()) {
             Toast.makeText(this, "Por favor llena al menos tu comida favorita", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        // 2. Creamos la "caja" y la llenamos con lo que escribió el usuario
         Gustos misGustos = new Gustos();
         misGustos.setComidaFavorita(comida);
         misGustos.setPeliculaFavorita(edtPelicula.getText().toString().trim());
@@ -65,16 +56,9 @@ public class GustosActivity extends AppCompatActivity {
         misGustos.setBebidaFavorita(edtBebida.getText().toString().trim());
         misGustos.setAnimalFavorito(edtAnimal.getText().toString().trim());
         misGustos.setLibroFavorito(edtLugar.getText().toString().trim());
-        // ... (agrega los set para los otros 7 campos) ...
 
-        // 3. ¡LA MAGIA! Dejamos esta caja en el buzón de la Agenda
         Agenda.gustosTemporales = misGustos;
-
-        // 4. Le avisamos al usuario
         Toast.makeText(this, "Gustos listos. Termina de guardar en la Agenda.", Toast.LENGTH_SHORT).show();
-
-        // 5. Destruimos esta pantalla.
-        // Como no usamos Intent, Android revelará la Agenda que estaba justo debajo, ¡con sus textos intactos!
         finish();
     }
 }

@@ -18,8 +18,7 @@ public class Buscar extends AppCompatActivity {
     public static ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     EditText edtBuscarCedula;
     Button btnEjecutarBusqueda;
-    TextView tvCedula, tvNombre, tvApellido, tvCorreo, tvTelefono, tvDireccion, tvCiudad, tvDepartamento,
-            tvCodigoPostal, tvOcupacion, tvFechaNacimiento, tvGenero, tvColorFavorito, tvComida, tvPasatiempo, tvMusica;
+    TextView tvDatosBasicos, tvTodosLosGustos, tvTodasLasPreferencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +35,9 @@ public class Buscar extends AppCompatActivity {
         edtBuscarCedula = findViewById(R.id.edtBuscarCedula);
         btnEjecutarBusqueda = findViewById(R.id.btnEjecutarBusqueda);
 
-        tvCedula = findViewById(R.id.tvCedula);
-        tvNombre = findViewById(R.id.tvNombre);
-        tvApellido = findViewById(R.id.tvApellido);
-        tvCorreo = findViewById(R.id.tvCorreo);
-        tvTelefono = findViewById(R.id.tvTelefono);
-        tvDireccion = findViewById(R.id.tvDireccion);
-        tvCiudad = findViewById(R.id.tvCiudad);
-        tvDepartamento = findViewById(R.id.tvDepartamento);
-        tvCodigoPostal = findViewById(R.id.tvCodigoPostal);
-        tvOcupacion = findViewById(R.id.tvOcupacion);
-        tvFechaNacimiento = findViewById(R.id.tvFechaNacimiento);
-        tvGenero = findViewById(R.id.tvGenero);
-        tvColorFavorito = findViewById(R.id.tvColorFavorito);
-        tvComida = findViewById(R.id.tvComida);
-        tvPasatiempo = findViewById(R.id.tvPasatiempo);
-        tvMusica = findViewById(R.id.tvMusica);
+        tvDatosBasicos = findViewById(R.id.tvDatosBasicos);
+        tvTodosLosGustos = findViewById(R.id.tvTodosLosGustos);
+        tvTodasLasPreferencias = findViewById(R.id.tvTodasLasPreferencias);
 
         btnEjecutarBusqueda.setOnClickListener(v -> buscarUsuario());
     }
@@ -67,48 +53,67 @@ public class Buscar extends AppCompatActivity {
 
         for (Usuario u : listaUsuarios) {
             if (u.getCedula().equals(cedulaBuscada)) {
-                tvCedula.setText(u.getCedula());
-                tvNombre.setText(u.getNombre());
-                tvApellido.setText(u.getApellido());
-                tvCorreo.setText(u.getCorreo());
-                tvTelefono.setText(u.getTelefono());
-                tvDireccion.setText(u.getDireccion());
-                tvCiudad.setText(u.getCiudad());
-                tvDepartamento.setText(u.getDepartamento());
-                tvCodigoPostal.setText(u.getCodigoPostal());
-                tvOcupacion.setText(u.getOcupacion());
-                tvFechaNacimiento.setText(u.getFechaNacimiento());
-                tvGenero.setText(u.getGenero());
-                tvColorFavorito.setText(u.getColorFavorito());
-                tvComida.setText(u.getComidaFavorita());
-                tvPasatiempo.setText(u.getPasatiempo());
-                tvMusica.setText(u.getGeneroMusica());
+
+                // 1. Armamos el bloque de DATOS BÁSICOS
+                String datos = "Cédula: " + u.getCedula() + "\n" +
+                        "Nombre: " + u.getNombre() + " " + u.getApellido() + "\n" +
+                        "Correo: " + u.getCorreo() + "\n" +
+                        "Teléfono: " + u.getTelefono() + "\n" +
+                        "Dirección: " + u.getDireccion() + "\n" +
+                        "Ubicación: " + u.getCiudad() + ", " + u.getDepartamento() + "\n" +
+                        "C.P.: " + u.getCodigoPostal() + "\n" +
+                        "Ocupación: " + u.getOcupacion() + "\n" +
+                        "Nacimiento: " + u.getFechaNacimiento() + "\n" +
+                        "Género: " + u.getGenero();
+                tvDatosBasicos.setText(datos);
+
+                // 2. Armamos el bloque de GUSTOS
+                if (u.getMisGustos() != null) {
+                    String gustos = "Comida: " + u.getMisGustos().getComidaFavorita() + "\n" +
+                            "Película: " + u.getMisGustos().getPeliculaFavorita() + "\n" +
+                            "Música: " + u.getMisGustos().getGeneroMusical() + "\n" +
+                            "Color: " + u.getMisGustos().getColorFavorito() + "\n" +
+                            "Deporte: " + u.getMisGustos().getDeporteFavorito() + "\n" +
+                            "Libro: " + u.getMisGustos().getLibroFavorito() + "\n" +
+                            "Pasatiempo: " + u.getMisGustos().getPasatiempo() + "\n" +
+                            "Bebida: " + u.getMisGustos().getBebidaFavorita() + "\n" +
+                            "Animal: " + u.getMisGustos().getAnimalFavorito() + "\n" +
+                            "Viaje: " + u.getMisGustos().getLugarDeViaje();
+                    tvTodosLosGustos.setText(gustos);
+                } else {
+                    tvTodosLosGustos.setText("El usuario no registró gustos.");
+                }
+
+                if (u.getMisPreferencias() != null) {
+                    String pref = "Notificaciones: " + u.getMisPreferencias().getNotificaciones() + "\n" +
+                            "Tema: " + u.getMisPreferencias().getTema() + "\n" +
+                            "Idioma: " + u.getMisPreferencias().getIdioma() + "\n" +
+                            "Privacidad: " + u.getMisPreferencias().getPrivacidad() + "\n" +
+                            "Correos: " + u.getMisPreferencias().getFrecuenciaCorreos() + "\n" +
+                            "Letra: " + u.getMisPreferencias().getTamañoLetra() + "\n" +
+                            "Sonidos: " + u.getMisPreferencias().getSonidos() + "\n" +
+                            "Autoguardado: " + u.getMisPreferencias().getAutoguardado() + "\n" +
+                            "Hora: " + u.getMisPreferencias().getFormatoHora() + "\n" +
+                            "Inicio: " + u.getMisPreferencias().getPantallaInicio();
+                    tvTodasLasPreferencias.setText(pref);
+                } else {
+                    tvTodasLasPreferencias.setText("El usuario no registró preferencias.");
+                }
 
                 encontrado = true;
                 break;
             }
         }
+
         if (!encontrado) {
             limpiarCampos();
             Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
         }
     }
+
     private void limpiarCampos() {
-        tvCedula.setText("");
-        tvNombre.setText("");
-        tvApellido.setText("");
-        tvCorreo.setText("");
-        tvTelefono.setText("");
-        tvDireccion.setText("");
-        tvCiudad.setText("");
-        tvDepartamento.setText("");
-        tvCodigoPostal.setText("");
-        tvOcupacion.setText("");
-        tvFechaNacimiento.setText("");
-        tvGenero.setText("");
-        tvColorFavorito.setText("");
-        tvComida.setText("");
-        tvPasatiempo.setText("");
-        tvMusica.setText("");
+        tvDatosBasicos.setText("Los datos aparecerán aquí...");
+        tvTodosLosGustos.setText("Los gustos aparecerán aquí...");
+        tvTodasLasPreferencias.setText("Las preferencias aparecerán aquí...");
     }
 }

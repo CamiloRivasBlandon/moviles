@@ -16,10 +16,8 @@ public class Usuario implements Serializable {
     private String ocupacion;
     private String fechaNacimiento;
     private String genero;
-    private String colorFavorito;
-    private String comidaFavorita;
-    private String pasatiempo;
-    private String generoMusica;
+    private Gustos misGustos;
+    private Preferencias misPreferencias;
 
     public String getCedula() {return cedula;}
     public void setCedula(String cedula) {this.cedula = cedula;}
@@ -45,12 +43,8 @@ public class Usuario implements Serializable {
     public void setFechaNacimiento(String fechaNacimiento) {this.fechaNacimiento = fechaNacimiento;}
     public String getGenero() {return genero;}
     public void setGenero(String genero) {this.genero = genero;}
-    public String getColorFavorito() { return colorFavorito; }
-    public void setColorFavorito(String colorFavorito) { this.colorFavorito = colorFavorito; }
-    public String getComidaFavorita() { return comidaFavorita; }
-    public void setComidaFavorita(String comidaFavorita) { this.comidaFavorita = comidaFavorita; }
-    public String getPasatiempo() { return pasatiempo; }
-    public void setPasatiempo(String pasatiempo) { this.pasatiempo = pasatiempo; }
-    public String getGeneroMusica() { return generoMusica; }
-    public void setGeneroMusica(String generoMusica) { this.generoMusica = generoMusica; }
+    public Gustos getMisGustos() { return misGustos; }
+    public void setMisGustos(Gustos misGustos) { this.misGustos = misGustos; }
+    public Preferencias getMisPreferencias() { return misPreferencias; }
+    public void setMisPreferencias(Preferencias misPreferencias) { this.misPreferencias = misPreferencias; }
 }
