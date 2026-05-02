@@ -14,7 +14,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-// Importaciones necesarias para manejar archivos
 import java.io.OutputStreamWriter;
 
 public class CrearUsuario extends AppCompatActivity {
